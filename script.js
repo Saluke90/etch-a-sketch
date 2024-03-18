@@ -1,5 +1,23 @@
 const container = document.querySelector(".container");
 
+const button = document.querySelector("button");
+
+button.addEventListener("click", () => {
+    const cols = document.querySelectorAll(".col");
+    cols.forEach((col) => {
+        col.remove();
+    });
+    
+    let size = prompt("New grid size:");
+    
+    if (+size > 64) {
+        alert("Maximum size is 64");
+        size = prompt("New grid size:");
+    }
+
+    gridMaker(+size);
+})
+
 function gridMaker(num) {
     for (let i = 0; i < num; i++) {
         let col = document.createElement("div");
@@ -15,15 +33,16 @@ function gridMaker(num) {
             column.appendChild(row);
             row.classList.add('row');
         }
-    )}
-};
+    )};
 
-gridMaker(64);
+    const squares = document.querySelectorAll(".row");
 
-const squares = document.querySelectorAll(".row");
-
-squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = "red";
+    squares.forEach((square) => {
+        square.style.backgroundColor = "white";
+        square.addEventListener("mouseover", () => {
+            square.style.backgroundColor = "red";
     })
 })
+};
+
+gridMaker(16);
