@@ -7,7 +7,7 @@ button.addEventListener("click", () => {
     cols.forEach((col) => {
         col.remove();
     });
-    
+
     let size = prompt("New grid size:");
     
     if (+size > 64) {
@@ -40,7 +40,8 @@ function gridMaker(num) {
     squares.forEach((square) => {
         square.style.backgroundColor = "white";
         square.addEventListener("mouseover", () => {
-            square.style.backgroundColor = "red";
+            let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            square.style.backgroundColor = "#" + randomColor;
     })
 })
 };
